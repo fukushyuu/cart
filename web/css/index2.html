@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <ul>
+      <li><a href="ControllerAdmin">Admin</a></li>
+      <li><a href="ControllerProduct">Product</a></li>
+      <li><a href="ControllerCustomer">Customer</a></li>
+      <li><a href="ControllerCategory">Category</a></li>
+      <li><a href="ControllerBill">Bill</a></li>
+      <li><a href="ControllerBillDetail">Bill Detail</a></li>
+      <li><a href="ControllerCart">List items</a></li>
+    </ul>
+    <form action="cart" method="post">
+      <ul class="category-list">
+        <li>
+          <input type="radio" name="cateID" value="" onchange="submit(this);"
+          <%=((cateID != null && cateID.equals("")) ? "checked" : "")%>>All
+        </li>
+        <% while (rsCate.next()) { if (rsCate.getInt("status") == 1) { %>
+        <li>
+          <input type="radio" name="cateID" value="<%=rsCate.getString(1)%>"
+          onchange="submit(this);" <%=((cateID != null &&
+          cateID.equals(rsCate.getString(1))) ? "checked" : "")%>>
+          <%=rsCate.getString(2)%>
+        </li>
+        <% } } %>
+      </ul>
+    </form>
+    <span></span>
+  </body>
+</html>
